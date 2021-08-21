@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import sliderIcon from '../img/icon-slider.svg'
 import { COLORS } from '../utils/colors'
+import { prices } from '../data/data'
 
 const Slider = ({ setValue, value }) => {
   const handleOnChange = (e) => {
@@ -10,7 +11,12 @@ const Slider = ({ setValue, value }) => {
 
   return (
     <SliderWrapper>
-      <StyledSlider min={0} max={4} value={value} onChange={handleOnChange} />
+      <StyledSlider
+        min={0}
+        max={prices.length - 1}
+        value={value}
+        onChange={handleOnChange}
+      />
     </SliderWrapper>
   )
 }
@@ -37,7 +43,7 @@ const StyledSlider = styled.input.attrs({
     top: 0;
     left: 0;
     background-color: ${COLORS.primary.softCyan};
-    width: ${(props) => (100 / 4) * props.value}%;
+    width: ${(props) => (100 / props.max) * props.value}%;
     height: inherit;
     border-radius: inherit;
     z-index: -1;

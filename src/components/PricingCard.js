@@ -6,7 +6,7 @@ import BillingToggle from './BillingToggle'
 import FeaturesList from './FeaturesList'
 import { features } from '../data/data'
 import Button from './Button'
-import { prices } from '../data/data'
+import { prices, pageViews } from '../data/data'
 
 const PricingCard = () => {
   const [value, setValue] = useState(2)
@@ -14,7 +14,7 @@ const PricingCard = () => {
 
   return (
     <CardWrapper>
-      <h2>100K Pageviews</h2>
+      <h2>{pageViews[value]} Pageviews</h2>
       <Slider setValue={setValue} value={value} />
       <PriceWrapper>
         <h5>${discount ? prices[value] * 0.75 : prices[value]}.00</h5>
