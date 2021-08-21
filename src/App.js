@@ -93,11 +93,13 @@ const InfoWrapper = styled.div`
 const BackgroundPattern = styled.img`
   position: absolute;
   z-index: -2;
-  min-width: 375px;
   height: 50%;
+  width: 100%;
+  object-position: left bottom;
+  object-fit: cover;
 
   @media only screen and (min-width: 1600px) {
-    width: 100%;
+    width: 100vw;
   }
 `
 
