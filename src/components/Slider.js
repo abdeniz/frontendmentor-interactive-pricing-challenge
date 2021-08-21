@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import sliderIcon from '../img/icon-slider.svg'
 import { COLORS } from '../utils/colors'
 
 let sliderPercentage = '50%'
 
-const Slider = () => {
+const Slider = ({ setValue, value }) => {
+  const handleOnChange = (e) => {
+    setValue(e.target.value)
+  }
+
   return (
     <SliderWrapper>
-      <StyledSlider>
-        <SliderCircle>
-          <img src={sliderIcon} alt='slider_icon' />
-        </SliderCircle>
-      </StyledSlider>
+      <StyledSlider min={0} max={5} value={value} onChange={handleOnChange} />
     </SliderWrapper>
   )
 }
@@ -22,40 +22,41 @@ const SliderWrapper = styled.div`
   width: 80%;
 `
 
-const SliderCircle = styled.div`
-  background-color: ${COLORS.primary.strongCyan};
-  width: 40px;
-  height: 40px;
-
-  border-radius: 50%;
-  position: relative;
-  top: -16px;
-  left: ${sliderPercentage};
-  transform: translateX(-50%);
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-`
-
-const StyledSlider = styled.div`
-  position: relative;
-  border-radius: 5px;
-  background: ${COLORS.neutral.lightGrayBlue};
-  height: 10px;
+const StyledSlider = styled.input.attrs({
+  type: 'range',
+})`
+  appearance: none;
   width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: ${COLORS.neutral.lightGrayBlue};
+  position: relative;
+  z-index: 0;
 
   &::after {
     content: '';
     position: absolute;
-    background-color: ${COLORS.primary.softCyan};
-    left: 0;
     top: 0;
-    border-radius: 5px;
-    width: ${sliderPercentage};
-    height: 10px;
-    z-index: 0;
+    left: 0;
+    background-color: ${COLORS.primary.softCyan};
+
+    width: ${(props) => (100 / 5) * props.value}%;
+    height: inherit;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background: url(${sliderIcon});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: ${COLORS.primary.strongCyan};
+    cursor: pointer;
   }
 `
 

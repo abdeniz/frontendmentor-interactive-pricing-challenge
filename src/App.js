@@ -70,9 +70,7 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 500;
     color: ${COLORS.neutral.grayBlue};
     line-height: 175%;
-  }
-
-  
+  }  
 `
 
 const MainContentWrapper = styled.div`

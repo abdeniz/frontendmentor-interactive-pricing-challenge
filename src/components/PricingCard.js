@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLORS } from '../utils/colors'
 import Slider from './Slider'
@@ -6,14 +6,17 @@ import BillingToggle from './BillingToggle'
 import FeaturesList from './FeaturesList'
 import { features } from '../data/features'
 import Button from './Button'
+import { prices } from '../data/prices'
 
 const PricingCard = () => {
+  const [value, setValue] = useState(3)
+
   return (
     <CardWrapper>
       <h2>100K Pageviews</h2>
-      <Slider />
+      <Slider setValue={setValue} value={value} />
       <PriceWrapper>
-        <h5>$16.00</h5>
+        <h5>${prices[value - 1]}.00</h5>
         <h4>/ month</h4>
       </PriceWrapper>
 
