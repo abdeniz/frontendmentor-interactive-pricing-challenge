@@ -4,12 +4,12 @@ import { COLORS } from '../utils/colors'
 import Slider from './Slider'
 import BillingToggle from './BillingToggle'
 import FeaturesList from './FeaturesList'
-import { features } from '../data/features'
+import { features } from '../data/data'
 import Button from './Button'
-import { prices } from '../data/prices'
+import { prices } from '../data/data'
 
 const PricingCard = () => {
-  const [value, setValue] = useState(3)
+  const [value, setValue] = useState(2)
   const [discount, setDiscount] = useState(false)
 
   return (

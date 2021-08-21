@@ -37,7 +37,6 @@ const StyledSlider = styled.input.attrs({
     top: 0;
     left: 0;
     background-color: ${COLORS.primary.softCyan};
-
     width: ${(props) => (100 / 4) * props.value}%;
     height: inherit;
     border-radius: inherit;

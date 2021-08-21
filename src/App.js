@@ -95,6 +95,10 @@ const BackgroundPattern = styled.img`
   z-index: -2;
   min-width: 375px;
   height: 50%;
+
+  @media only screen and (min-width: 1600px) {
+    width: 100%;
+  }
 `
 
 const PatternCircles = styled.img`

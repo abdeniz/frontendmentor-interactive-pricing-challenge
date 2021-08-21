@@ -39,10 +39,13 @@ const ToggleBackground = styled.div`
   height: 24px;
   border-radius: 15px;
   cursor: pointer;
-
   position: relative;
-
   margin: 0 16px;
+  transition: background-color 0.2s;
+
+  &:hover > div {
+    left: ${(props) => (props.discount ? '30px' : '18px')};
+  }
 `
 
 const ToggleCircle = styled.div`
@@ -51,12 +54,11 @@ const ToggleCircle = styled.div`
   background-color: ${(props) =>
     props.discount ? COLORS.primary.strongCyan : COLORS.neutral.white};
   border-radius: 100%;
-
   position: absolute;
   top: 50%;
   left: ${(props) => (props.discount ? '36px' : '12px')};
-
   transform: translate(-50%, -50%);
+  transition: left 0.2s, transform 0.2s;
 `
 
 const YearlyBillingWrapper = styled.div`
