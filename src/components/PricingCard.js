@@ -10,17 +10,18 @@ import { prices } from '../data/prices'
 
 const PricingCard = () => {
   const [value, setValue] = useState(3)
+  const [discount, setDiscount] = useState(false)
 
   return (
     <CardWrapper>
       <h2>100K Pageviews</h2>
       <Slider setValue={setValue} value={value} />
       <PriceWrapper>
-        <h5>${prices[value - 1]}.00</h5>
+        <h5>${discount ? prices[value] * 0.75 : prices[value]}.00</h5>
         <h4>/ month</h4>
       </PriceWrapper>
 
-      <BillingToggle />
+      <BillingToggle setDiscount={setDiscount} discount={discount} />
 
       <HorizontalLine />
       <FeaturesList features={features} />

@@ -3,12 +3,16 @@ import styled from 'styled-components'
 import { COLORS } from '../utils/colors'
 import Discount from './Discount'
 
-const BillingToggle = () => {
+const BillingToggle = ({ setDiscount, discount }) => {
+  const handleClick = () => {
+    setDiscount(!discount)
+  }
+
   return (
     <BillingToggleWrapper>
       <BillingText>Monthly Billing</BillingText>
-      <ToggleBackground>
-        <ToggleCircle />
+      <ToggleBackground discount={discount} onClick={() => handleClick()}>
+        <ToggleCircle discount={discount} />
       </ToggleBackground>
       <YearlyBillingWrapper>
         <BillingText>Yearly Billing </BillingText>
@@ -29,10 +33,12 @@ const BillingText = styled.p`
 `
 
 const ToggleBackground = styled.div`
-  background-color: ${COLORS.neutral.lightGrayBlue2};
+  background-color: ${(props) =>
+    props.discount ? COLORS.primary.softCyan : COLORS.neutral.lightGrayBlue2};
   width: 48px;
   height: 24px;
   border-radius: 15px;
+  cursor: pointer;
 
   position: relative;
 
@@ -42,12 +48,13 @@ const ToggleBackground = styled.div`
 const ToggleCircle = styled.div`
   width: 16px;
   height: 16px;
-  background-color: ${COLORS.neutral.white};
+  background-color: ${(props) =>
+    props.discount ? COLORS.primary.strongCyan : COLORS.neutral.white};
   border-radius: 100%;
 
   position: absolute;
   top: 50%;
-  left: 12px;
+  left: ${(props) => (props.discount ? '36px' : '12px')};
 
   transform: translate(-50%, -50%);
 `

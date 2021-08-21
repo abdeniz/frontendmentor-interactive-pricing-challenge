@@ -5,9 +5,9 @@ import styled from 'styled-components'
 const FeaturesList = ({ features }) => {
   return (
     <FeaturesListWrapper>
-      {features.map((feature) => {
+      {features.map((feature, index) => {
         return (
-          <Feature>
+          <Feature key={index}>
             <img src={checkmarkIcon} alt='checkmark_icon' />
             <FeatureText>{feature}</FeatureText>
           </Feature>

@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import sliderIcon from '../img/icon-slider.svg'
 import { COLORS } from '../utils/colors'
-
-let sliderPercentage = '50%'
 
 const Slider = ({ setValue, value }) => {
   const handleOnChange = (e) => {
@@ -12,7 +10,7 @@ const Slider = ({ setValue, value }) => {
 
   return (
     <SliderWrapper>
-      <StyledSlider min={0} max={5} value={value} onChange={handleOnChange} />
+      <StyledSlider min={0} max={4} value={value} onChange={handleOnChange} />
     </SliderWrapper>
   )
 }
@@ -40,7 +38,7 @@ const StyledSlider = styled.input.attrs({
     left: 0;
     background-color: ${COLORS.primary.softCyan};
 
-    width: ${(props) => (100 / 5) * props.value}%;
+    width: ${(props) => (100 / 4) * props.value}%;
     height: inherit;
     border-radius: inherit;
     z-index: -1;
@@ -49,6 +47,7 @@ const StyledSlider = styled.input.attrs({
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
+    border: none;
     width: 40px;
     height: 40px;
     border-radius: 100%;
