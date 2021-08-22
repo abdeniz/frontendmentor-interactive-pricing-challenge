@@ -17,6 +17,7 @@ const PricingCard = () => {
       <h2>{pageViews[value]} Pageviews</h2>
       <Slider setValue={setValue} value={value} />
       <PriceWrapper>
+        {discount && <OldPrice>${prices[value]}.00</OldPrice>}
         <h5>${discount ? prices[value] * 0.75 : prices[value]}.00</h5>
         <h4>/ month</h4>
       </PriceWrapper>
@@ -45,7 +46,9 @@ const CardWrapper = styled.div`
 const PriceWrapper = styled.div`
   display: flex;
   align-items: center;
-  padding: 0 0 20px 0;
+  justify-content: center;
+  margin: 0 0 20px 0;
+  position: relative;
 
   & > h5 {
     margin-right: 10px;
@@ -56,6 +59,14 @@ const HorizontalLine = styled.hr`
   border: solid 1px ${COLORS.neutral.lightGrayBlue};
   width: 100%;
   margin: 20px 0 20px 0;
+`
+
+const OldPrice = styled.h4`
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-decoration: line-through;
 `
 
 export default PricingCard
